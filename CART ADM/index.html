@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART ADM</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/inicio.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Carregando Início...</p>
+        </div>
+    </div>
+
+    <!-- Mobile Backdrop -->
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+    <!-- Modern Sidebar -->
+    <aside class="modern-sidebar" id="modern-sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-brand">
+            <div class="brand-logo">
+                <div class="logo-circle">
+                    <img src="assets/favicon.png" alt="CART ADM">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">CART ADM</span>
+                    <span class="brand-subtitle">Painel Administrativo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-page="inicio">
+                        <div class="nav-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="nav-text">Início</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="atividades">
+                        <div class="nav-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <span class="nav-text">Atividades</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="powerbi">
+                        <div class="nav-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <span class="nav-text">Power BI</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="comunicados">
+                        <div class="nav-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <span class="nav-text">Comunicados</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="atendimento">
+                        <div class="nav-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <span class="nav-text">Atendimento</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="equipe">
+                        <div class="nav-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="nav-text">Equipe</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-bottom">
+            <div class="social-links">
+                <div class="social-icons">
+                    <a href="https://github.com/otavioyyy" target="_blank" rel="noopener noreferrer" class="social-link github" title="GitHub - Otávio Maia">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ot%C3%A1vio-maia-967-/" target="_blank" rel="noopener noreferrer" class="social-link linkedin" title="LinkedIn - Otávio Maia">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="theme-switcher">
+                <button class="theme-btn" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Modo Escuro</span>
+                </button>
+            </div>
+            
+            <div class="help-section">
+                <button class="help-btn" id="help-button">
+                    <div class="help-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="help-content">
+                        <span class="help-title">Ajuda</span>
+                        <span class="help-desc">Suporte técnico</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header" id="mobile-header">
+        <div class="mobile-header-content">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <div class="mobile-brand">
+                <div class="mobile-logo">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <span class="mobile-brand-text">CART ADM</span>
+            </div>
+            
+            <div class="mobile-actions">
+                <button class="mobile-theme-btn" id="mobile-theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Desktop Header -->
+        <header class="desktop-header">
+            <div class="header-content">
+                <div class="page-info">
+                    <h1 class="page-title" id="page-title">Início</h1>
+                    <p class="page-subtitle" id="page-subtitle">Visão geral das operações administrativas</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="header-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="current-time"></span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar"></i>
+                            <span id="current-date"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Início Page -->
+            <div class="page active" id="inicio-page">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="hero-background">
+                        <div class="hero-gradient"></div>
+                        <div class="floating-elements">
+                            <div class="floating-shape"></div>
+                            <div class="floating-shape"></div>
+                            <div class="floating-shape"></div>
+                            <div class="floating-shape"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-container">
+                        <div class="hero-content">
+                            
+                            
+                            <h1 class="hero-title">
+                                <span class="title-main">PAINEL</span>
+                                <span class="title-highlight">ADMINISTRATIVO</span>
+                                <span class="title-subtitle">Resultados que superam expectativas</span>
+                            </h1>
+                            
+                       
+                            
+                            <div class="hero-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <span>Gestão Estratégica</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <span>Processos Otimizados</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <span>Qualidade Premium</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-visual">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-header">
+                                    <div class="dash-controls">
+                                        <div class="control-dot red"></div>
+                                        <div class="control-dot yellow"></div>
+                                        <div class="control-dot green"></div>
+                                    </div>
+                                    <div class="dash-title">Status Operacional</div>
+                                    <div class="dash-time">14:32:15</div>
+                                </div>
+                                
+                                <div class="dashboard-metrics">
+                                    <div class="metric-item">
+                                        <div class="metric-number">100</div>
+                                        <div class="metric-label">% Excelência</div>
+                                    </div>
+                                    <div class="metric-item">
+                                        <div class="metric-number">100</div>
+                                        <div class="metric-label">% Eficiência</div>
+                                    </div>
+                                    <div class="metric-item">
+                                        <div class="metric-number">4</div>
+                                        <div class="metric-label">Inspetores</div>
+                                    </div>
+                                    <div class="metric-item">
+                                        <div class="metric-number">40</div>
+                                        <div class="metric-label">Edificações</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="performance-display">
+                                    <div class="performance-ring">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle class="ring-bg" cx="50" cy="50" r="40"/>
+                                            <circle class="ring-progress" cx="50" cy="50" r="40"/>
+                                        </svg>
+                                        <div class="performance-text">
+                                            <span class="perf-number">100</span>
+                                            <span class="perf-symbol">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="performance-label">Performance Geral</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Weather Section -->
+                <section class="weather-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Condições Climáticas - Rodovia CART</h2>
+                    </div>
+                    
+                    <div class="weather-grid">
+                        <div class="weather-card" data-trecho="1">
+                            <div class="weather-header">
+                                <div class="trecho-info">
+                                    <h3>TRECHO 1</h3>
+                                    <div class="trecho-cities">BAURU-SP</div>
+                                </div>
+                                <div class="weather-status">
+                                    <div class="status-dot loading"></div>
+                                    <span>Carregando...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-content">
+                                <div class="weather-main">
+                                    <div class="weather-icon">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <div>
+                                        <div class="temperature">
+                                            <span class="temp-value">--</span>
+                                            <span class="temp-unit">°C</span>
+                                        </div>
+                                        <div class="weather-condition">Carregando...</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="weather-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-tint"></i>
+                                        <span class="detail-label">Umidade</span>
+                                        <span class="detail-value">--%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-wind"></i>
+                                        <span class="detail-label">Vento</span>
+                                        <span class="detail-value">-- km/h</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="detail-label">Visibilidade</span>
+                                        <span class="detail-value">-- km</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-thermometer-half"></i>
+                                        <span class="detail-label">Sensação</span>
+                                        <span class="detail-value">--°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-footer">
+                                <div class="last-update">
+                                    <i class="fas fa-sync"></i> Aguardando atualização...
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="weather-card" data-trecho="2">
+                            <div class="weather-header">
+                                <div class="trecho-info">
+                                    <h3>TRECHO 2</h3>
+                                    <div class="trecho-cities">ASSIS-SP</div>
+                                </div>
+                                <div class="weather-status">
+                                    <div class="status-dot loading"></div>
+                                    <span>Carregando...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-content">
+                                <div class="weather-main">
+                                    <div class="weather-icon">
+                                        <i class="fas fa-cloud"></i>
+                                    </div>
+                                    <div>
+                                        <div class="temperature">
+                                            <span class="temp-value">--</span>
+                                            <span class="temp-unit">°C</span>
+                                        </div>
+                                        <div class="weather-condition">Carregando...</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="weather-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-tint"></i>
+                                        <span class="detail-label">Umidade</span>
+                                        <span class="detail-value">--%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-wind"></i>
+                                        <span class="detail-label">Vento</span>
+                                        <span class="detail-value">-- km/h</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="detail-label">Visibilidade</span>
+                                        <span class="detail-value">-- km</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-thermometer-half"></i>
+                                        <span class="detail-label">Sensação</span>
+                                        <span class="detail-value">--°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-footer">
+                                <div class="last-update">
+                                    <i class="fas fa-sync"></i> Aguardando atualização...
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="weather-card" data-trecho="3">
+                            <div class="weather-header">
+                                <div class="trecho-info">
+                                    <h3>TRECHO 3</h3>
+                                    <div class="trecho-cities">PRUDENTE-SP</div>
+                                </div>
+                                <div class="weather-status">
+                                    <div class="status-dot loading"></div>
+                                    <span>Carregando...</span>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-content">
+                                <div class="weather-main">
+                                    <div class="weather-icon">
+                                        <i class="fas fa-cloud-sun"></i>
+                                    </div>
+                                    <div>
+                                        <div class="temperature">
+                                            <span class="temp-value">--</span>
+                                            <span class="temp-unit">°C</span>
+                                        </div>
+                                        <div class="weather-condition">Carregando...</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="weather-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-tint"></i>
+                                        <span class="detail-label">Umidade</span>
+                                        <span class="detail-value">--%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-wind"></i>
+                                        <span class="detail-label">Vento</span>
+                                        <span class="detail-value">-- km/h</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="detail-label">Visibilidade</span>
+                                        <span class="detail-value">-- km</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-thermometer-half"></i>
+                                        <span class="detail-label">Sensação</span>
+                                        <span class="detail-value">--°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="weather-footer">
+                                <div class="last-update">
+                                    <i class="fas fa-sync"></i> Aguardando atualização...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- System Section -->
+                <section class="system-section">
+                    <div class="tech-header">
+                        <h2 class="section-title">
+                            <span class="tech-prefix">~/</span>SISTEMA<span class="tech-cursor">_</span>
+                        </h2>
+                        <p class="section-subtitle">Status técnico e informações do sistema</p>
+                    </div>
+                    
+                    <div class="system-grid">
+                        <div class="system-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">
+                                        <h3>POWERBI</h3>
+                                    </div>
+                                    <div class="card-subtitle">Dashboard Analytics</div>
+                                </div>
+                                <div class="card-status">
+                                    <div class="status-pulse"></div>
+                                    <span>ONLINE</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-content">
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">Última Publicação:</span>
+                                        <span class="info-value">06/06/2025 10:42</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Status:</span>
+                                        <span class="info-value success">Operacional</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Última Sincronização:</span>
+                                        <span class="info-value">14:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <button class="system-btn" data-action="powerbi">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Acessar Dashboard</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="system-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">
+                                        <h3>WEBSITE</h3>
+                                    </div>
+                                    <div class="card-subtitle">Sistema Web</div>
+                                </div>
+                                <div class="card-status">
+                                    <div class="status-pulse"></div>
+                                    <span>ONLINE</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-content">
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">Última Atualização:</span>
+                                        <span class="info-value">06/06/2025 14:26</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Versão:</span>
+                                        <span class="info-value">v2.3.1</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Uptime:</span>
+                                        <span class="info-value success">99.9%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <button class="system-btn" data-action="system-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Detalhes do Sistema</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="system-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div>
+                                    <div class="card-title">
+                                        <h3>PERFORMANCE</h3>
+                                    </div>
+                                    <div class="card-subtitle">Sistema Status</div>
+                                </div>
+                                <div class="card-status">
+                                    <div class="status-pulse"></div>
+                                    <span>ONLINE</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-content">
+                                <div class="performance-display">
+                                    <div class="circular-progress">
+                                        <svg class="progress-svg" viewBox="0 0 100 100">
+                                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                                            <circle class="progress-fill" cx="50" cy="50" r="45"/>
+                                        </svg>
+                                        <div class="progress-text">
+                                            <span class="progress-value">100</span>
+                                            <span class="progress-unit">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="system-details">
+                                    <div class="detail-item">
+                                        <div class="detail-dot"></div>
+                                        <span>CPU: 23%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-dot"></div>
+                                        <span>RAM: 45%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-dot"></div>
+                                        <span>Disco: 67%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <button class="system-btn" data-action="refresh-status">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <span>Atualizar Status</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Power BI Page -->
+            <div class="page" id="powerbi-page">
+                <div class="powerbi-container">
+                    <div class="powerbi-header">
+                        <h2>Dashboard Power BI</h2>
+                        <div class="powerbi-controls">
+                            <button class="btn-primary" id="refresh-powerbi">
+                                <i class="fas fa-sync-alt"></i>
+                                Atualizar
+                            </button>
+                            <button class="btn-secondary" id="fullscreen-powerbi">
+                                <i class="fas fa-expand"></i>
+                                Tela Cheia
+                            </button>
+                        </div>
+                    </div>
+                    <div class="powerbi-iframe-container">
+                        <iframe 
+                            id="powerbi-iframe"
+                            title="Indicador_ADM" 
+                            width="100%" 
+                            height="100%" 
+                            src="https://app.powerbi.com/reportEmbed?reportId=64e478fb-ce93-4ae1-92ca-fbf9aaf386b1&autoAuth=true&ctid=48a3b807-608a-4aed-93c6-d10b37240de2" 
+                            frameborder="0" 
+                            allowFullScreen="true">
+                        </iframe>
+                        <div class="powerbi-placeholder" style="display: none;">
+                            <i class="fas fa-chart-bar"></i>
+                            <h3>Conecte seu Power BI</h3>
+                            <p>Configure a URL do seu dashboard Power BI para visualização em tempo real</p>
+                            <button class="btn-primary" id="configure-powerbi">Configurar Power BI</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rotina Page -->
+            <div class="page" id="rotina-page">
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Chamados em Andamento</h3>
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="metric">15</div>
+                        <div class="metric-subtitle">Tickets ativos</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Chamados Pendentes</h3>
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="metric">8</div>
+                        <div class="metric-subtitle">Aguardando atribuição</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Chamados Concluídos</h3>
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="metric">142</div>
+                        <div class="metric-subtitle">Este mês</div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <h3>Últimos Chamados</h3>
+                    <div class="data-table">
+                        <div class="table-header">
+                            <span>ID</span>
+                            <span>Descrição</span>
+                            <span>Status</span>
+                            <span>Responsável</span>
+                            <span>Data</span>
+                        </div>
+                        <div class="table-row">
+                            <span>#001</span>
+                            <span>Manutenção ar condicionado - Sala 202</span>
+                            <span class="status in-progress">Em andamento</span>
+                            <span>João Silva</span>
+                            <span>Hoje, 14:30</span>
+                        </div>
+                        <div class="table-row">
+                            <span>#002</span>
+                            <span>Troca de lâmpadas - Corredor A</span>
+                            <span class="status completed">Concluído</span>
+                            <span>Maria Santos</span>
+                            <span>Hoje, 13:15</span>
+                        </div>
+                        <div class="table-row">
+                            <span>#003</span>
+                            <span>Limpeza geral - Auditório</span>
+                            <span class="status pending">Pendente</span>
+                            <span>-</span>
+                            <span>Hoje, 12:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Materiais Page -->
+            <div class="page" id="materiais-page">
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total de Itens</h3>
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="metric">324</div>
+                        <div class="metric-subtitle">Ferramentas catalogadas</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Em Uso</h3>
+                            <i class="fas fa-hand-holding"></i>
+                        </div>
+                        <div class="metric">89</div>
+                        <div class="metric-subtitle">Equipamentos alocados</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Disponíveis</h3>
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="metric">235</div>
+                        <div class="metric-subtitle">Prontos para uso</div>
+                    </div>
+                </div>
+
+                <div class="materials-grid">
+                    <div class="material-item">
+                        <div class="material-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h4>Ferramentas Básicas</h4>
+                        <p>Martelos, chaves de fenda, alicates</p>
+                        <span class="material-count">45 itens</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h4>Ferramentas Elétricas</h4>
+                        <p>Furadeiras, parafusadeiras, serras</p>
+                        <span class="material-count">32 itens</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h4>EPIs</h4>
+                        <p>Capacetes, luvas, óculos de proteção</p>
+                        <span class="material-count">78 itens</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PMRV Page -->
+            <div class="page" id="pmrv-page">
+                <div class="content-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Bases Ativas</h3>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="metric">12</div>
+                        <div class="metric-subtitle">Pontos operacionais</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Manutenções Hoje</h3>
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="metric">3</div>
+                        <div class="metric-subtitle">Agendadas</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Eficiência</h3>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="metric">96%</div>
+                        <div class="metric-subtitle">Disponibilidade</div>
+                    </div>
+                </div>
+
+                <div class="base-grid">
+                    <div class="base-item">
+                        <div class="base-status online"></div>
+                        <h4>Base PMRV-01</h4>
+                        <p>Rodovia BR-101, KM 45</p>
+                        <div class="base-info">
+                            <span><i class="fas fa-users"></i> 3 agentes</span>
+                            <span><i class="fas fa-clock"></i> 24h</span>
+                        </div>
+                    </div>
+                    <div class="base-item">
+                        <div class="base-status maintenance"></div>
+                        <h4>Base PMRV-02</h4>
+                        <p>Rodovia BR-101, KM 78</p>
+                        <div class="base-info">
+                            <span><i class="fas fa-tools"></i> Manutenção</span>
+                            <span><i class="fas fa-clock"></i> 14:00</span>
+                        </div>
+                    </div>
+                    <div class="base-item">
+                        <div class="base-status online"></div>
+                        <h4>Base PMRV-03</h4>
+                        <p>Rodovia BR-101, KM 112</p>
+                        <div class="base-info">
+                            <span><i class="fas fa-users"></i> 4 agentes</span>
+                            <span><i class="fas fa-clock"></i> 24h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atividades Realizadas Page -->
+            <div class="page" id="atividades-page">
+                <div class="newspaper-layout">
+                    <!-- Header do Jornal -->
+                    <div class="newspaper-header">
+                        <h1 class="newspaper-title">CART NOTÍCIAS</h1>
+                        <div class="newspaper-subtitle">Boletim de atividades e notícias do Administrativo</div>
+                        <div class="newspaper-date" id="newspaper-date"></div>
+                    </div>
+
+                    <!-- Controles de Gerenciamento de Notícias -->
+                    <div class="news-management">
+                        <div class="management-header">
+                            <h3><i class="fas fa-cog"></i> Gerenciar Notícias</h3>
+                            <div class="management-controls">
+                                <button class="btn-add-news" id="add-news-btn">
+                                    <i class="fas fa-plus"></i> Adicionar Notícia
+                                </button>
+                                <button class="btn-refresh-news" id="refresh-news-btn">
+                                    <i class="fas fa-sync-alt"></i> Atualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Notícias -->
+                    <div class="news-grid" id="news-grid">
+                        <article class="news-card featured" data-news-id="1">
+                            <div class="news-actions">
+                                <button class="btn-edit-news" onclick="editNews(1)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-delete-news" onclick="deleteNews(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="news-badge urgent">DESTAQUE</div>
+                            <h3 class="news-title">Reparo da Marquise P09 Reconstruída</h3>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar"></i> Ontem, 14:15</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Posto P09</span>
+                            </div>
+                            <p class="news-excerpt"> Colisão de caminhão bitren com a caçamba suspensa a cobertura da Praça de Pedágio de Caiuá (P09), KM 639, SP 270, na data de 29/10/2024.</p>
+                            <div class="news-status completed">
+                                <i class="fas fa-check-circle"></i> Concluído
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-news-id="2">
+                            <div class="news-actions">
+                                <button class="btn-edit-news" onclick="editNews(2)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-delete-news" onclick="deleteNews(2)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <h3 class="news-title">Troca das Calhas Telhado P04</h3>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar"></i> Anteontem, 11:20</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Posto P04</span>
+                            </div>
+                            <p class="news-excerpt">Substituição completa do sistema de calhas do telhado do posto P04. O trabalho foi realizado preventivamente para evitar infiltrações durante o período chuvoso.</p>
+                            <div class="news-status completed">
+                                <i class="fas fa-check-circle"></i> Concluído
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-news-id="3">
+                            <div class="news-actions">
+                                <button class="btn-edit-news" onclick="editNews(3)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-delete-news" onclick="deleteNews(3)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <h3 class="news-title">Reparo do Poço de Abastecimento</h3>
+                            <div class="news-meta">
+                                <span><i class="fas fa-calendar"></i> 2 dias atrás, 09:30</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Área Central</span>
+                            </div>
+                            <p class="news-excerpt">Manutenção corretiva realizada no poço de abastecimento principal. Foi identificado e reparado vazamento na tubulação principal, restabelecendo o fornecimento normal de água.</p>
+                            <div class="news-status completed">
+                                <i class="fas fa-check-circle"></i> Concluído
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Rodapé do Jornal -->
+                    <div class="newspaper-footer">
+                        <div class="footer-info">
+                            <p><strong>CART - Administrativo Infraestrutura Predial</strong></p>
+                            <p>Boletim interno de atividades • Atualizado em tempo real</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add other pages here with similar structure -->
+            <div class="page" id="artesp-page">
+                <div class="page-placeholder">
+                    <i class="fas fa-road"></i>
+                    <h3>ARTESP - DOPS</h3>
+                    <p>Módulo em desenvolvimento</p>
+                </div>
+            </div>
+
+            <div class="page" id="insumos-page">
+                <div class="page-placeholder">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Controle de Insumos</h3>
+                    <p>Módulo em desenvolvimento</p>
+                </div>
+            </div>
+
+            <div class="page" id="limpeza-page">
+                <div class="page-placeholder">
+                    <i class="fas fa-broom"></i>
+                    <h3>Limpeza de Fossa</h3>
+                    <p>Módulo em desenvolvimento</p>
+                </div>
+            </div>
+
+            <!-- Comunicados Page -->
+            <div class="page" id="comunicados-page">
+                <div class="comunicados-container">
+                    <!-- Header dos Comunicados -->
+                    <div class="comunicados-header">
+                        <div class="header-content">
+                            <h2><i class="fas fa-bullhorn"></i> Central de Comunicadosㅤ</h2>
+                            <p>Mantenha-se atualizado com os últimos avisos e informações do ADMINISTRATIVO</p>
+                        </div>
+                        <div class="filter-controls">
+                            <button class="filter-btn active" data-filter="all">
+                                <i class="fas fa-list"></i> Todos
+                            </button>
+                            <button class="filter-btn" data-filter="urgent">
+                                <i class="fas fa-exclamation-triangle"></i> Urgente
+                            </button>
+                            <button class="filter-btn" data-filter="general">
+                                <i class="fas fa-info-circle"></i> Geral
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid de Comunicados -->
+                    <div class="comunicados-grid">
+                        <div class="comunicado-card urgent" data-category="urgent">
+                            <div class="comunicado-badge urgent">
+                                <i class="fas fa-exclamation-circle"></i> URGENTE
+                            </div>
+                            <div class="comunicado-image">
+                                <img src="assets/comunicados/comunicado1.png" alt="Comunicado Urgente" loading="lazy">
+                                <button class="enlarge-btn" onclick="enlargeImage('assets/comunicados/comunicado1.png', 'Comunicado Urgente')" title="Ampliar imagem">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            <div class="comunicado-content">
+                                <h3>Novo Protocolo de Segurança</h3>
+                                <p>Implementação imediata de novos procedimentos de segurança para todas as unidades da CART.</p>
+                            </div>
+                        </div>
+
+                        <div class="comunicado-card general" data-category="general">
+                            <div class="comunicado-badge general">
+                                <i class="fas fa-info-circle"></i> INFORMATIVO
+                            </div>
+                            <div class="comunicado-image">
+                                <img src="assets/comunicados/comunicado2.png" alt="Comunicado Informativo" loading="lazy">
+                                <button class="enlarge-btn" onclick="enlargeImage('assets/comunicados/comunicado2.png', 'Comunicado Informativo')" title="Ampliar imagem">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            <div class="comunicado-content">
+                                <h3>Atualização de Sistemas</h3>
+                                <p>Melhorias nos sistemas internos para otimizar os processos administrativos e operacionais.</p>
+                            </div>
+                        </div>
+
+                        <div class="comunicado-card general" data-category="general">
+                            <div class="comunicado-badge general">
+                                <i class="fas fa-calendar-alt"></i> EVENTO
+                            </div>
+                            <div class="comunicado-image">
+                                <img src="assets/comunicados/comunicado3.png" alt="Comunicado de Evento" loading="lazy">
+                                <button class="enlarge-btn" onclick="enlargeImage('assets/comunicados/comunicado3.png', 'Comunicado de Evento')" title="Ampliar imagem">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            <div class="comunicado-content">
+                                <h3>Reunião Geral de Equipe</h3>
+                                <p>Convocação para reunião geral com toda a equipe para alinhamento de objetivos e metas.</p>
+                            </div>
+                        </div>
+
+                        <div class="comunicado-card urgent" data-category="urgent">
+                            <div class="comunicado-badge urgent">
+                                <i class="fas fa-tools"></i> MANUTENÇÃO
+                            </div>
+                            <div class="comunicado-image">
+                                <img src="assets/comunicados/comunicado4.png" alt="Comunicado de Manutenção" loading="lazy">
+                                <button class="enlarge-btn" onclick="enlargeImage('assets/comunicados/comunicado4.png', 'Comunicado de Manutenção')" title="Ampliar imagem">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            <div class="comunicado-content">
+                                <h3>Manutenção Programada</h3>
+                                <p>Manutenção preventiva programada em sistemas críticos durante o final de semana.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estatísticas dos Comunicados -->
+                    <div class="comunicados-stats">
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>4</h4>
+                                <p>Comunicados Ativos</p>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-week"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Esta Semana</h4>
+                                <p>Última Atualização</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="atendimento-page">
+                <div class="atendimento-container">
+                    <div class="atendimento-header">
+                        <h2><i class="fas fa-headset"></i> Central de Atendimento</h2>
+                        <p>Entre em contato conosco através dos canais disponíveis</p>
+                    </div>
+                    
+                    <!-- Status de Atendimento -->
+                    <div class="status-atendimento">
+                        <div class="status-item online">
+                            <div class="status-indicator"></div>
+                            <span>Atendimento Online</span>
+                        </div>
+                        <div class="horario-funcionamento">
+                            <i class="fas fa-clock"></i>
+                            <span>Segunda a Sexta: 08:30 às 18:30</span>
+                        </div>
+                    </div>
+
+                    <!-- Cards de Contato -->
+                    <div class="contatos-grid">
+                        <!-- Atendimento Predial -->
+                        <div class="contato-card predial" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-icon-bg">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3><i class="fas fa-building"></i> Atendimento Predial</h3>
+                            <p><strong>Suporte Equipe Predial</strong></p>
+                            <div class="contato-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp:</span>
+                                <a href="https://wa.me/5514310422319">+55 14 3104-2319</a>
+                                <button class="mini-btn whatsapp" onclick="window.open('https://wa.me/5514310422319', '_blank')" title="Abrir WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="contato-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>E-mail:</span>
+                                <a href="mailto:predial@cartsp.com.br">predial@cartsp.com.br</a>
+                                <button class="mini-btn" onclick="openEmailModal('predial')" title="Compor email">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                            </div>
+
+                            <div class="contato-item featured">
+                                <i class="fas fa-ticket-alt"></i>
+                                <span>Sistema de Chamados:</span>
+                                <a href="https://cartsp.deskbee.app/app/ticket/inventsys/operation/1/65/create" target="_blank">DeskBee Platform</a>
+                                <button class="mini-btn primary" onclick="window.open('https://cartsp.deskbee.app/app/ticket/inventsys/operation/1/65/create', '_blank')" title="Abrir DeskBee">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Atendimento Administrativo -->
+                        <div class="contato-card administrativo" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-icon-bg">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3><i class="fas fa-briefcase"></i> Atendimento Administrativo</h3>
+                            <p><strong>Suporte Administrativo</strong></p>
+                            
+                            <div class="contato-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Celular:</span>
+                                <a href="tel:+5514998827847">+55 14 99882-7847</a>
+                                <button class="mini-btn" onclick="window.location.href='tel:+5514998827847'" title="Ligar agora">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </button>
+                            </div>
+
+                            <div class="contato-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>E-mail:</span>
+                                <a href="mailto:administrativo@cartsp.com.br">administrativo@cartsp.com.br</a>
+                                <button class="mini-btn" onclick="openEmailModal('administrativo')" title="Compor email">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                            </div>
+
+                            <div class="contato-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp:</span>
+                                <span>Contato direto</span>
+                                <button class="mini-btn whatsapp" onclick="window.open('https://wa.me/5514998827847', '_blank')" title="Abrir WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seção de Contato Rápido -->
+                    <div class="contato-rapido" data-aos="fade-up" data-aos-delay="300">
+                        <h3><i class="fas fa-rocket"></i> Contato Rápido</h3>
+                        <p>Precisa de ajuda imediata? Use nossos canais de atendimento rápido</p>
+                        <div class="quick-contact-buttons">
+                            <button class="quick-btn emergency" onclick="window.location.href='tel:+5514310422319'">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Emergência</span>
+                                <small>Ligue agora</small>
+                            </button>
+                            <button class="quick-btn whatsapp" onclick="window.open('https://wa.me/5514998827847', '_blank')">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                                <small>Chat direto</small>
+                            </button>
+                            <button class="quick-btn email" onclick="openEmailModal('geral')">
+                                <i class="fas fa-envelope"></i>
+                                <span>E-mail</span>
+                                <small>Mensagem</small>
+                            </button>
+                            <button class="quick-btn deskbee" onclick="window.open('https://cartsp.deskbee.app/app/ticket/inventsys/operation/1/65/create', '_blank')">
+                                <i class="fas fa-ticket-alt"></i>
+                                <span>DeskBee</span>
+                                <small>Abrir chamado</small>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-adicional">
+                        <div class="horarios-funcionamento">
+                            <h3><i class="fas fa-clock"></i> Horário de Funcionamento</h3>
+                            <div class="horarios-grid">
+                                <div class="horario-item">
+                                    <span class="dia">Segunda a Quinta:</span>
+                                    <span class="horario">08:30 - 18:30</span>
+                                </div>
+                                <div class="horario-item">
+                                    <span class="dia">Sexta-feira:</span>
+                                    <span class="horario">08:30 - 17:30</span>
+                                </div>
+                                <div class="horario-item">
+                                    <span class="dia">Sábado e Domingo:</span>
+                                    <span class="horario">Indisponivel</span>
+                                </div>
+                                <div class="horario-item">
+                                    <span class="dia">Feriados:</span>
+                                    <span class="horario">Indisponivel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="equipe-page">
+                <div class="equipe-container">
+                    <!-- Header da Equipe -->
+                    <div class="equipe-header">
+                        <h2><i class="fas fa-users"></i> Nossa Equipe</h2>
+                        <p>Conheça os profissionais que fazem a diferença na CART</p>
+                        <div class="team-stats">
+                            <div class="team-stat">
+                                <span class="stat-number">17</span>
+                                <span class="stat-label">Colaboradores</span>
+                            </div>
+                            <div class="team-stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Comprometimento</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros por Departamento -->
+                    <div class="department-filters">
+                        <button class="dept-btn active" data-dept="all">
+                            <i class="fas fa-users"></i> Todos
+                        </button>
+                        <button class="dept-btn" data-dept="supervisor">
+                            <i class="fas fa-user-tie"></i> Supervisor
+                        </button>
+                        <button class="dept-btn" data-dept="inspetores-predial">
+                            <i class="fas fa-search"></i> Inspetores Predial
+                        </button>
+                        <button class="dept-btn" data-dept="infraestrutura-predial">
+                            <i class="fas fa-building"></i> Infraestrutura Predial
+                        </button>
+                        <button class="dept-btn" data-dept="apoio-administrativo">
+                            <i class="fas fa-briefcase"></i> Apoio Administrativo
+                        </button>
+                    </div>
+
+                    <!-- Grid da Equipe -->
+                    <div class="equipe-grid">
+                        <!-- 1. Wesley Barbosa -->
+                        <div class="member-card supervisor" data-department="supervisor">
+                            <div class="member-photo">
+                                <img src="assets/team/Wesley.png" alt="Wesley Barbosa" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Wesley Barbosa</h3>
+                                <span class="member-role">Supervisor</span>
+                                <span class="member-dept">Supervisor</span>
+                                <p class="member-bio">Responsável pela supervisão geral das operações e coordenação de equipes.</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. Murilo Mendes -->
+                        <div class="member-card infraestrutura-predial" data-department="infraestrutura-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/MuriloMendes.jpeg" alt="Murilo Mendes" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Murilo Mendes</h3>
+                                <span class="member-role">Analista Administrativo</span>
+                                <span class="member-dept">Infraestrutura Predial</span>
+                                <p class="member-bio">Especialista em soluções avançadas de infraestrutura predial.</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. Andreia Soares -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Andreia.png" alt="Andreia Soares" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Andreia Soares</h3>
+                                <span class="member-role">Analista Administrativa</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Suporte administrativo, atendimento e organização documental.</p>
+                            </div>
+                        </div>
+
+                        <!-- 4. Caroline Dellangelica -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Caroline.jpg" alt="Caroline Dellangelica" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Caroline Dellangelica</h3>
+                                <span class="member-role">Assistente Administrativa</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Gestão de recursos humanos e desenvolvimento de pessoas.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Edson Claudino -->
+                        <div class="member-card inspetores-predial" data-department="inspetores-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/Edson.jpg" alt="Edson Claudino" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Edson Claudino</h3>
+                                <span class="member-role">Inspetor Predial</span>
+                                <span class="member-dept">Inspetores Predial</span>
+                                <p class="member-bio">Inspeção e avaliação de sistemas prediais e estruturas.</p>
+                            </div>
+                        </div>
+
+                        <!-- 6. José Conceição -->
+                        <div class="member-card inspetores-predial" data-department="inspetores-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/Jose.jpeg" alt="José Conceição" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>José Conceição</h3>
+                                <span class="member-role">Inspetor Predial</span>
+                                <span class="member-dept">Inspetores Predial</span>
+                                <p class="member-bio">Inspeção e controle de qualidade das instalações prediais.</p>
+                            </div>
+                        </div>
+
+                        <!-- 7. Nicanor Barrotela -->
+                        <div class="member-card inspetores-predial" data-department="inspetores-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/Nicanor.jpeg" alt="Nicanor Barrotela" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Nicanor Barrotela</h3>
+                                <span class="member-role">Inspetor Predial</span>
+                                <span class="member-dept">Inspetores Predial</span>
+                                <p class="member-bio">Inspeção técnica e avaliação estrutural predial.</p>
+                            </div>
+                        </div>
+
+                        <!-- 8. Moisés Tadeu -->
+                        <div class="member-card inspetores-predial" data-department="inspetores-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/Moises.jpg" alt="Moisés Tadeu" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Moisés Tadeu</h3>
+                                <span class="member-role">Inspetor Predial</span>
+                                <span class="member-dept">Inspetores Predial</span>
+                                <p class="member-bio">Inspeção técnica e avaliação de segurança predial.</p>
+                            </div>
+                        </div>
+
+                        <!-- 9. Otávio Maia -->
+                        <div class="member-card infraestrutura-predial" data-department="infraestrutura-predial">
+                            <div class="member-photo">
+                                <img src="assets/team/Otavio.jpg" alt="Otávio Maia" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="mailto:otavio.maia@cartsp.com.br"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Otávio Maia</h3>
+                                <span class="member-role">Estagiário Superior</span>
+                                <span class="member-dept">Infraestrutura Predial</span>
+                                <p class="member-bio">Especialista em infraestrutura predial e sistemas construtivos.</p>
+                            </div>
+                        </div>
+
+                        <!-- 10. Diego Kapp -->
+                        <div class="member-card infraestrutura-predial" data-department="infraestrutura-predial">
+                            <div class="member-photo">
+                                <div class="member-avatar-placeholder">
+                                    <span>DK</span>
+                                </div>
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Diego Kapp</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Infraestrutura Predial</span>
+                                <p class="member-bio">Técnico especializado em infraestrutura e manutenção predial.</p>
+                            </div>
+                        </div>
+
+                        <!-- 11. Marina Maia -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Marina.jpeg" alt="Marina Maia" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Marina Maia</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Coordenação dos processos administrativos e suporte operacional.</p>
+                            </div>
+                        </div>
+
+                        <!-- 12. Maria Luiza -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Maria.jpg" alt="Maria Luiza" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Maria Luiza</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Análise e controle de processos administrativos e documentação.</p>
+                            </div>
+                        </div>
+
+                        <!-- 13. Nathaly Silva -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Nathaly.jpg" alt="Nathaly Silva" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Nathaly Silva</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Análise e controle financeiro, orçamentos e relatórios.</p>
+                            </div>
+                        </div>
+
+                        <!-- 14. Murilo José -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Murilo.jpg" alt="Murilo José" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Murilo José</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Apoio administrativo geral e suporte às operações internas.</p>
+                            </div>
+                        </div>
+
+                        <!-- 15. João Pedro -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <img src="assets/team/Joao.jpg" alt="João Pedro" loading="lazy">
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>João Pedro</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Suporte administrativo e coordenação de atividades internas.</p>
+                            </div>
+                        </div>
+
+                        <!-- 16. Karina Alves -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <div class="member-avatar-placeholder">
+                                    <span>KA</span>
+                                </div>
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Karina Alves</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Análise de processos administrativos e suporte operacional.</p>
+                            </div>
+                        </div>
+
+                        <!-- 17. Kauany Amos -->
+                        <div class="member-card apoio-administrativo" data-department="apoio-administrativo">
+                            <div class="member-photo">
+                                <div class="member-avatar-placeholder">
+                                    <span>KA</span>
+                                </div>
+                                <div class="member-overlay">
+                                    <div class="social-links">
+                                        <a href="#"><i class="fas fa-envelope"></i></a>
+                                        <a href="#"><i class="fas fa-phone"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3>Kauany Amos</h3>
+                                <span class="member-role">Jovem Aprendiz</span>
+                                <span class="member-dept">Apoio Administrativo</span>
+                                <p class="member-bio">Assistente administrativa e suporte às operações diárias.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="powerbi-config-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Configurar Power BI</h3>
+                <button class="modal-close" id="close-powerbi-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="powerbi-url">URL do Dashboard Power BI:</label>
+                <input type="url" id="powerbi-url" placeholder="https://app.powerbi.com/...">
+                <p class="help-text">Cole aqui a URL de incorporação do seu dashboard Power BI</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancel-powerbi-config">Cancelar</button>
+                <button class="btn-primary" id="save-powerbi-config">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de E-mail -->
+    <div class="modal" id="email-modal">
+        <div class="modal-content email-modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-envelope"></i> Enviar E-mail</h3>
+                <button class="modal-close" id="close-email-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="email-to">Para:</label>
+                        <input type="email" id="email-to" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-from">Seu E-mail:</label>
+                        <input type="email" id="email-from" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-subject">Assunto:</label>
+                        <input type="text" id="email-subject" placeholder="Digite o assunto da mensagem" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-message">Mensagem:</label>
+                        <textarea id="email-message" rows="6" placeholder="Digite sua mensagem aqui..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-priority">Prioridade:</label>
+                        <select id="email-priority">
+                            <option value="normal">Normal</option>
+                            <option value="high">Alta</option>
+                            <option value="urgent">Urgente</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancel-email">Cancelar</button>
+                <button class="btn-primary" id="send-email">
+                    <i class="fas fa-paper-plane"></i> Enviar E-mail
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Gerenciar Notícias -->
+    <div class="modal" id="news-modal">
+        <div class="modal-content news-modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-newspaper"></i> <span id="news-modal-title">Adicionar Notícia</span></h3>
+                <button class="modal-close" id="close-news-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="news-form">
+                    <div class="form-group">
+                        <label for="news-title">Título da Notícia:</label>
+                        <input type="text" id="news-title" placeholder="Digite o título da notícia" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-excerpt">Resumo/Descrição:</label>
+                        <textarea id="news-excerpt" rows="3" placeholder="Digite um resumo da notícia" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-location">Local:</label>
+                        <input type="text" id="news-location" placeholder="Ex: Posto P09, Área Central" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-author">Responsável:</label>
+                        <input type="text" id="news-author" placeholder="Ex: Equipe Técnica, Manutenção" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-status">Status:</label>
+                        <select id="news-status" required>
+                            <option value="completed">Concluído</option>
+                            <option value="in-progress">Em Andamento</option>
+                            <option value="pending">Pendente</option>
+                            <option value="urgent">Urgente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-badge">Tipo de Notícia:</label>
+                        <select id="news-badge" required>
+                            <option value="destaque">Destaque</option>
+                            <option value="nova">Nova</option>
+                            <option value="urgente">Urgente</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="info">Informativo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-featured">
+                            <input type="checkbox" id="news-featured"> Destacar esta notícia
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancel-news">Cancelar</button>
+                <button class="btn-primary" id="save-news">
+                    <i class="fas fa-save"></i> <span id="save-news-text">Salvar Notícia</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Imagem Ampliada -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content image-modal-content">
+            <div class="modal-header">
+                <h3 id="image-modal-title">Imagem Ampliada</h3>
+                <button class="modal-close" id="close-image-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="enlarged-image" src="" alt="" style="max-width: 100%; max-height: 80vh; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/inicio.js"></script>
+
+</body>
+</html> 
