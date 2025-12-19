@@ -1,0 +1,887 @@
+/* Estilos para a página de Calendário */
+.calendario-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+}
+
+/* Classe global para travar scroll quando drawer estiver aberto no mobile */
+body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+}
+
+/* Backdrop do drawer (sobreposição clicável) */
+.drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    border-radius: 12px; /* acompanha o container */
+}
+
+.calendario-container.drawer-open .drawer-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Empurrar o grid quando o drawer estiver aberto (desktop) */
+
+/* Reserva espaço do drawer à direita ao abrir (desktop) */
+/* Em desktop, o grid permanece no lugar e o drawer sobrepõe suavemente */
+.calendario-container.drawer-open {
+    --drawer-w: min(360px, 90vw);
+}
+
+@media (max-width: 768px) {
+    /* Em telas pequenas, permitir sobreposição do drawer */
+    .calendario-container.drawer-open {
+        padding-right: 0; /* No mobile, o drawer pode sobrepor */
+    }
+}
+
+.calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--bg-primary), rgba(99,102,241,0.06));
+}
+
+.calendario-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.calendario-controls h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.btn-nav {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.calendario-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.view-selector {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(56px, 1fr));
+    gap: 8px;
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    will-change: transform;
+}
+
+.weekdays {
+    display: contents;
+}
+
+.weekdays > div {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 8px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.calendario-dia {
+    position: relative;
+    background: linear-gradient(180deg, var(--bg-secondary), rgba(99,102,241,0.05));
+    border-radius: 10px;
+    padding: 8px;
+    min-height: 108px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.calendario-dia:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.calendario-dia.hoje {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+.calendario-dia.outro-mes {
+    opacity: 0.45;
+}
+
+/* Destaque de seleção manual do usuário */
+.calendario-dia.selected {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 2px;
+}
+
+.dia-numero {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dia-numero::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.calendario-dia.hoje .dia-numero::after {
+    background: var(--primary-color);
+}
+
+.calendario-dia.weekend {
+    background: linear-gradient(180deg, rgba(239,68,68,0.06), var(--bg-secondary));
+    border-color: rgba(239,68,68,0.35);
+}
+
+.calendario-dia.holiday {
+    background: linear-gradient(180deg, rgba(239,68,68,0.12), var(--bg-secondary));
+    border-color: rgba(239,68,68,0.5);
+}
+
+/* Dia com anotações (possui atividades) */
+.calendario-dia.has-atividades {
+    background: linear-gradient(180deg, rgba(99,102,241,0.06), var(--bg-secondary));
+    border-color: rgba(99,102,241,0.35);
+}
+/* Drawer lateral do dia */
+.day-drawer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(420px, 92vw);
+    height: 100%;
+    background: var(--bg-primary);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-drawer.active { transform: translateX(0); }
+
+/* Indicador de gesto no topo do drawer (mobile) */
+.drawer-grabber {
+    display: none;
+}
+
+/* Botão de fechar alternativo no rodapé para mobile */
+.drawer-footer-mobile {
+    display: none;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 8px 16px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.drawer-title { display: flex; align-items: center; gap: 8px; }
+.drawer-title h3 { font-size: 1.05rem; margin: 0; line-height: 1.2; }
+.drawer-header { position: sticky; top: 0; background: var(--bg-primary); z-index: 1; }
+
+.drawer-actions { padding: 8px 12px; border-bottom: 1px dashed var(--border-color); }
+.drawer-actions .mini { padding: 6px 10px; font-size: 0.8rem; }
+.drawer-actions { position: sticky; top: 48px; background: var(--bg-primary); z-index: 1; }
+
+.drawer-lista {
+    padding: 12px;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.atividade-item {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-radius: 14px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid var(--border-color);
+}
+
+.atividade-item.urgente {
+    background-color: rgba(239,68,68,0.08);
+    color: var(--danger-color);
+    border-color: rgba(239,68,68,0.25);
+}
+
+.atividade-item.alta {
+    background-color: rgba(245,158,11,0.08);
+    color: var(--warning-color);
+    border-color: rgba(245,158,11,0.25);
+}
+
+.atividades-resumo {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+}
+
+.resumo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.lista-atividades {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lista-atividade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.lista-atividade-item .atividade-info {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.lista-atividade-item .atividade-acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.lista-atividade-item .atividade-acoes button {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista-atividade-item .atividade-acoes button:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calendario-container {
+        padding: 10px;
+    }
+
+    .calendario-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .calendario-grid {
+        grid-template-columns: repeat(7, minmax(44px, 1fr));
+        gap: 6px;
+        padding: 10px;
+    }
+
+    .calendario-dia {
+        min-height: 80px;
+        padding: 6px;
+    }
+
+    .atividade-item {
+        font-size: 0.7rem;
+    }
+    /* No mobile o drawer deve sobrepor por cima de tudo */
+    .day-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Garantir que o botão de fechar seja bem visível no mobile */
+    .day-drawer .btn-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        background: var(--bg-secondary);
+        border: 2px solid var(--border-color);
+        color: var(--text-primary);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .day-drawer .btn-nav:hover {
+        background: var(--hover-color);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    /* Ajustar header para não ficar atrás da navbar */
+    .day-drawer .drawer-header {
+        padding-top: calc(env(safe-area-inset-top) + 16px);
+        padding-bottom: 12px;
+    }
+
+    /* Botão de fechar alternativo no rodapé para mobile */
+    .drawer-footer-mobile {
+        display: block;
+        padding: 16px;
+        border-top: 1px solid var(--border-color);
+        background: var(--bg-secondary);
+        margin-top: auto;
+        position: sticky;
+        bottom: 0;
+        z-index: 2;
+    }
+
+    .drawer-footer-mobile .mobile-close {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+
+    .drawer-grabber {
+        display: block;
+        width: 48px;
+        height: 5px;
+        background: var(--border-color);
+        border-radius: 999px;
+        margin: 8px auto 4px;
+        opacity: 0.9;
+    }
+
+    .drawer-backdrop {
+        position: absolute;
+        inset: 0;
+        border-radius: 0; /* full screen */
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendario-controls h2 { font-size: 1.125rem; }
+    .btn-nav { width: 32px; height: 32px; font-size: 0.9rem; }
+    .view-selector { font-size: 0.9rem; padding: 6px 10px; }
+    .weekdays > div { font-size: 0.8rem; padding: 6px; }
+    .calendario-dia { min-height: 72px; }
+    .dia-numero { font-size: 0.95rem; }
+    .atividade-item { font-size: 0.68rem; }
+}
+
+/* Estilos para o Modal de Atividades */
+.atividade-modal-content {
+    max-width: 520px;
+}
+
+.atividade-modal-content .form-group {
+    margin-bottom: 15px;
+}
+
+.atividade-modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.atividade-modal-content input,
+.atividade-modal-content select,
+.atividade-modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+#recorrencia-opcoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#recorrencia-opcoes select,
+#recorrencia-opcoes input {
+    width: auto;
+    flex-grow: 1;
+}
+
+/* Simplificação visual */
+.lista-atividades .lista-atividade-item:nth-child(n+4) {
+    display: none;
+}
+
+/* Detalhes avançados do modal */
+.atividade-avancado summary {
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 0;
+    color: var(--text-secondary);
+}
+
+.atividade-avancado[open] summary {
+    color: var(--text-primary);
+}
+
+/* Layout responsivo para dispositivos maiores */
+@media (min-width: 1024px) {
+    .calendario-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    
+    .calendario-main {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .day-drawer {
+        position: relative;
+        transform: none;
+        width: 380px;
+        height: auto;
+        min-height: 600px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        z-index: 1;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .day-drawer.active {
+        transform: none;
+    }
+    
+    .drawer-backdrop {
+        display: none;
+    }
+    
+    .calendario-container.drawer-open {
+        --drawer-w: 380px;
+    }
+    
+    /* Esconder elementos mobile em desktop */
+    .drawer-grabber,
+    .drawer-footer-mobile {
+        display: none;
+    }
+    
+    /* Ajustar header do drawer em desktop */
+    .day-drawer .drawer-header {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+/* Estilos para o seletor de cores */
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.color-picker input[type="color"] {
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+}
+
+.color-presets {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.color-preset {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-preset:hover {
+    transform: scale(1.1);
+    border-color: var(--text-primary);
+}
+
+.color-preset.active {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 2px var(--bg-primary);
+}
+
+/* Estilos para anotações */
+.anotacao-item {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 4px solid;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.anotacao-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.anotacao-titulo {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.anotacao-descricao {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.anotacao-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.anotacao-categoria {
+    background: var(--bg-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+/* Ajustes para o resumo de anotações */
+.anotacoes-resumo {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.anotacoes-resumo .resumo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.anotacoes-resumo .resumo-header h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.anotacoes-resumo .resumo-header span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.lista-anotacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Estilos para anotações no calendário */
+.calendario-dia .anotacao-item {
+    background: var(--bg-primary);
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 1px 0;
+    font-size: 0.7rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-left: 3px solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.calendario-dia .anotacao-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.mais-anotacoes {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 1px 0;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mais-anotacoes:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Ajustes para o indicador de anotações */
+.calendario-dia.has-anotacoes::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+/* Estilos para anotações no drawer */
+.drawer-lista .anotacao-item {
+    margin-bottom: 12px;
+    border-left: 4px solid;
+}
+
+.drawer-lista .anotacao-item .anotacao-info {
+    flex: 1;
+}
+
+.drawer-lista .anotacao-item .anotacao-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.drawer-lista .anotacao-item .anotacao-acoes button {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawer-lista .anotacao-item .anotacao-acoes button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Ajustes para o resumo de anotações */
+.anotacoes-resumo {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.anotacoes-resumo .resumo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.anotacoes-resumo .resumo-header h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.anotacoes-resumo .resumo-header span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.lista-anotacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Estilos para anotações no resumo */
+.anotacao-item {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 4px solid;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.anotacao-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.anotacao-info {
+    flex: 1;
+}
+
+.anotacao-titulo {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.anotacao-descricao {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.anotacao-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.anotacao-categoria {
+    background: var(--bg-secondary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+.anotacao-acoes {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.anotacao-acoes button {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.anotacao-acoes button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Responsividade para o seletor de cores */
+@media (max-width: 768px) {
+    .color-presets {
+        gap: 6px;
+    }
+    
+    .color-preset {
+        width: 28px;
+        height: 28px;
+    }
+}
+
